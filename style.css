@@ -39,3 +39,8 @@ a {
 a:hover {
     color: var(--color-headings);
 }
+
+.card{
+    margin-right: 10px;
+    margin-left: 10px;
+}
