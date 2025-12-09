@@ -35,6 +35,8 @@ async function createLead(){
 
 }
 
+
+//Initial message to CPU defining the function
 async function getProducts(){
 
     //Promise = is an operation, JS loading in the background
@@ -46,10 +48,12 @@ async function getProducts(){
         }
     });
 
+    //Define data and cardsContainer variables for the computer
     let data = await response.json();
 
     let cardsContainer = document.getElementById("cardsContainer");
 
+    //For loop that's supposed to GET the information/images from Supabase
     for(let i = 0; i < data.length; i++){
         cardsContainer.innerHTML += `
         <div class="col-md-6 col-lg-3 mb-3 mr-10">
@@ -65,9 +69,5 @@ async function getProducts(){
         </div>
       </div>
         `
-
-
-
     }
-
-}
+  }
