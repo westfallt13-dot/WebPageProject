@@ -1,7 +1,7 @@
 //Establish Variables For Database So That We Can POST Data To It
 let url = "https://wiindbcmuzsxitfcnitu.supabase.co/rest/v1/leads";
 let apikey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndpaW5kYmNtdXpzeGl0ZmNuaXR1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ4NDk2MDksImV4cCI6MjA4MDQyNTYwOX0.IQCFxwXd5yWU0Tnuoh7DK8YbLekoFtDlAeoiFgUZa0A";
-
+let urlProducts = "https://wiindbcmuzsxitfcnitu.supabase.co/rest/v1/products?select=*";
 
 //Function For Posting SupaBase
 async function createLead(){
@@ -32,5 +32,42 @@ async function createLead(){
 
     //Log To Console To Verify Function Was Ran Properly
     console.log("Created Lead")
+
+}
+
+async function getProducts(){
+
+    //Promise = is an operation, JS loading in the background
+    let response = await fetch(urlProducts, {
+        method: "GET",
+        headers: {
+            "apikey" : apikey,
+            "Content-Type" : "application/json"
+        }
+    });
+
+    let data = await response.json();
+
+    let cardsContainer = document.getElementById("cardsContainer");
+
+    for(let i = 0; i < data.length; i++){
+        cardsContainer.innerHTML += `
+        <div class="col-md-6 col-lg-3 mb-3 mr-10">
+        <div class="card" style="width: 18rem">
+          <img src="${data[i].image_url}" class="card-img-top" alt="${data[i].name}" />
+          <div class="card-body">
+            <h5 class="card-title">${data[i].name}</h5>
+            <p class="card-text">
+              ${data[i].description}
+            </p>
+            <p class="btn btn-primary">${data[i].price}</p>
+          </div>
+        </div>
+      </div>
+        `
+
+
+
+    }
 
 }
