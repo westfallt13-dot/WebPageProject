@@ -1,7 +1,7 @@
 //Establish Variables For Database So That We Can POST Data To It
 let url = "https://wiindbcmuzsxitfcnitu.supabase.co/rest/v1/leads";
 let apikey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndpaW5kYmNtdXpzeGl0ZmNuaXR1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ4NDk2MDksImV4cCI6MjA4MDQyNTYwOX0.IQCFxwXd5yWU0Tnuoh7DK8YbLekoFtDlAeoiFgUZa0A";
-let urlProducts = "https://wiindbcmuzsxitfcnitu.supabase.co/rest/v1/products?select=*";
+let urlProducts = "https://wiindbcmuzsxitfcnitu.supabase.co/rest/v1/products";
 
 //Function For Posting SupaBase
 async function createLead(){
@@ -50,6 +50,7 @@ async function getProducts(){
 
     //Define data and cardsContainer variables for the computer
     let data = await response.json();
+    console.log(data);
 
     let cardsContainer = document.getElementById("cardsContainer");
 
@@ -70,4 +71,5 @@ async function getProducts(){
       </div>
         `
     }
+  
   }
